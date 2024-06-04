@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catrine</title>
+    <style>
+      body {
+          margin: 0;
+          font-family: 'Roboto', sans-serif;
+          background-color: #121212;
+          color: #ffffff;
+          display: flex;
+          flex-direction: column;
+          min-height: 100vh;
+          justify-content: space-between;
+      }
+
+      header {
+          background-color: #1f1f1f;
+          text-align: center;
+          box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+      }
+
+      .logo-container {
+          display: flex;
+          align-items: center;
+      }
+
+      .logo {
+          width: 100px;
+          height: auto;
+          margin-right: 10px; /* Adjust margin as needed */
+      }
+
+      .company-name {
+          color: #ffffff; /* Text color */
+          font-size: 24px; /* Adjust font size as needed */
+          font-weight: bold; /* Optionally make it bold */
+      }
+
+
+      nav {
+          flex-grow: 1;
+          text-align: center;
+      }
+
+      .header-links {
+          list-style-type: none;
+          margin: 0;
+          padding: 0;
+          display: flex;
+          justify-content: center;
+          gap: 20px;
+      }
+
+      .header-links li {
+          display: inline;
+      }
+
+      .header-links li a {
+          color: #fff;
+          text-decoration: none;
+          font-size: 18px;
+          padding: 10px 20px;
+          border-radius: 5px;
+          transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+      }
+
+      .header-links li a:hover {
+          background-color: #a5a5a552;
+          color: #fff;
+      }
+
+      nav ul {
+          list-style-type: none;
+          margin: 0;
+          padding: 0;
+          display: flex;
+          justify-content: center;
+          gap: 20px;
+      }
+
+      nav ul li {
+          display: inline;
+      }
+
+      nav ul li a {
+          color: #fff;
+          text-decoration: none;
+          font-size: 18px;
+          padding: 10px 20px;
+          border-radius: 5px;
+          transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+      }
+
+      nav ul li a:hover {
+          background-color: #bfbfbf;
+          color: #fff;
+      }
+
+
+
+      .welcome-section {
+        display: flex;
+        flex-direction: column;
+        align-items: center; /* Center horizontally */
+        justify-content: center; /* Center vertically */
+        padding: 50px 0;
+      }
+
+      .welcome h1 {
+          font-size: 48px;
+          color: #fff;
+          animation: neonGlow 1.5s infinite alternate;
+          text-align: center;
+      }
+
+      .animated-image {
+          width: 100%;
+          max-width: 600px;
+          height: auto;
+          margin-top: 20px;
+          border-radius: 10px;
+          animation: imageMove 3s infinite alternate;
+      }
+
+      #products {
+          text-align: center;
+          padding: 50px 0;
+      }
+
+      #products h2 {
+          font-size: 36px;
+          color: #fff;
+      }
+
+      .product-container {
+          display: flex;
+          justify-content: center;
+          flex-wrap: wrap;
+          gap: 20px;
+          padding: 20px;
+      }
+
+      .product-card {
+          background-color: #1f1f1f;
+          border: 2px solid #1f0b95;
+          border-radius: 10px;
+          padding: 20px;
+          width: 250px;
+          text-align: left;
+          transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+          color: #fff;
+          display: flex;
+          flex-direction: column;
+      }
+
+      .product-card:hover {
+          transform: translateY(-10px);
+          box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+      }
+
+      .product-card .info {
+          display: flex;
+          align-items: flex-end;
+      }
+
+      .product-card .price {
+          font-size: 20px;
+          color: #afafaf;
+          margin-bottom: 10px;
+      }
+
+      .product-card .availability {
+          font-size: 16px;
+          padding: 0px 0px 3px 10px;
+          color: #b9b9b9;
+      }
+
+      .product-card .features {
+          font-size: 16px;
+          color: #bfbfbf;
+          margin-bottom: 5px;
+      }
+
+      .product-card ul {
+          padding-left: 20px;
+      }
+
+      .product-card ul li {
+          margin-bottom: 5px;
+      }
+
+      .product-card button {
+          background-color: #0080ff;
+          color: #ffffff;
+          border: none;
+          padding: 10px 20px;
+          border-radius: 5px;
+          cursor: pointer;
+          transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+      }
+
+      .product-card button:hover {
+          background-color: #bfbfb;
+      }
+
+      footer {
+          background-color: #1f1f1f;
+          text-align: center;
+          padding: 10px 0;
+          position: relative;
+          width: 100%;
+      }
+
+      @keyframes neonGlow {
+          from {
+              text-shadow: 0 0 5px #bfbfbf, 0 0 10px #bfbfbf, 0 0 15px #bfbfbf, 0 0 20px #bfbfbf, 0 0 25px #bfbfbf, 0 0 30px #bfbfbf, 0 0 35px #bfbfbf;
+          }
+          to {
+              text-shadow: 0 0 10px #bfbfbf, 0 0 20px #bfbfbf, 0 0 30px #bfbfbf, 0 0 40px #bfbfbf, 0 0 50px #bfbfbf, 0 0 60px #bfbfbf, 0 0 70px #bfbfbf;
+          }
+      }
+
+      @keyframes imageMove {
+          from {
+              transform: translateY(0);
+          }
+          to {
+              transform: translateY(-20px);
+          }
+      }
+
+      .decoration-text {
+          font-size: 15px;
+          color: #b9b9b9;
+          text-align: center;
+          padding: 20px 200px;
+      }
+
+      .donate-button {
+          background-color: #0080ff;
+          color: #ffffff;
+          border: none;
+          border-radius: 5px;
+          cursor: pointer;
+          transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+          width: 120px;
+          text-align: center;
+          box-sizing: border-box;
+      }
+
+
+      .donate-button:hover {
+          background-color: #0056b3;
+      }
+
+      .video-container {
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: center;
+          gap: 20px;
+          padding: 20px;
+          max-width: 1200px;
+          margin: 0 auto;
+      }
+
+      .video-card {
+          background-color: #1f1f1f;
+          border-radius: 10px;
+          overflow: hidden;
+          width: 320px;
+          transform: translateY(0);
+          transition: transform 0.3s ease, box-shadow 0.3s ease;
+          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      }
+
+      .video-card:hover {
+          transform: translateY(-10px);
+          box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+      }
+
+      .video-card iframe {
+          width: 100%;
+          height: 180px;
+      }
+
+      .video-title {
+          padding: 10px;
+          font-size: 16px;
+          text-align: center;
+          background-color: #292929;
+      }
+
+      @keyframes fadeIn {
+          from {
+              opacity: 0;
+          }
+          to {
+              opacity: 1;
+          }
+      }
+
+      .video-card {
+          animation: fadeIn 1s ease-in-out;
+      }
+
+      h1 {
+          text-align: center;
+      }
+
+    </style>
+  <script>
+
+    document.addEventListener("DOMContentLoaded", function() {
+      const sellixButton = document.getElementById("sellix-buy-button");
+      sellixButton.addEventListener("click", function() {
+        const productId = sellixButton.getAttribute("data-sellix-product");
+        const customData = JSON.parse(sellixButton.getAttribute("data-sellix-custom-catrine-fortnite"));
+
+        Sellix.configure({
+          domain: "catrineteam.mysellix.io",
+          key: "n14nXnbwYYpETdPNFyB8MN1vhZyGBu7GdfgP50gL4hrWjOqXXxOCiiY1Wb6zKbOq",
+          product: productId,
+          custom: customData
+        });
+
+        Sellix.open();
+      });
+    });
+
+    document.addEventListener("DOMContentLoaded", function() {
+    const API_KEY = 'AIzaSyBJFFfMjG0aZcCIllnq3gyBBfK2J9axS10';
+            const CHANNEL_ID = 'UCiB2vY2STRuavkPvOz4jk0w';
+            const MAX_RESULTS = 6;
+
+            const videoContainer = document.getElementById('video-container');
+
+            fetch(`https://www.googleapis.com/youtube/v3/search?key=${API_KEY}&channelId=${CHANNEL_ID}&part=snippet,id&order=date&maxResults=${MAX_RESULTS}`)
+                .then(response => response.json())
+                .then(data => {
+                    data.items.forEach(item => {
+                        const videoId = item.id.videoId;
+                        const videoTitle = item.snippet.title;
+                        const videoElement = document.createElement('div');
+                        videoElement.classList.add('video-card');
+                        videoElement.innerHTML = `
+                            <iframe src="https://www.youtube.com/embed/${videoId}" frameborder="0" allowfullscreen></iframe>
+                            <div class="video-title">${videoTitle}</div>
+                        `;
+                        videoContainer.appendChild(videoElement);
+                    });
+                })
+                .catch(error => console.error('Error fetching YouTube videos:', error));
+    
+        fetch('https://worldtimeapi.org/api/timezone/Etc/UTC')
+          .then(response => response.json())
+          .then(data => {
+            const currentYear = new Date(data.utc_datetime).getFullYear();
+            const footer = document.querySelector('footer');
+            footer.innerHTML = `<p>&copy; ${currentYear} Catrine. All rights reserved.</p>`; 
+          })
+          .catch(error => console.error('Error fetching current year:', error));
+    });
+  </script>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+
+  <script src="https://cdn.sellix.io/static/js/embed.js"></script>
+  <link href="https://cdn.sellix.io/static/css/embed.css" rel="stylesheet"/>
+  <link rel="icon" href="CatrineLogo-removebg.png">
+
+</head>
+<body>
+  <header>
+    <div class="logo-container">
+        <img src="CatrineLogo-removebg.png" alt="Logo" class="logo">
+        <span class="company-name">Catrine</span>
+    </div>
+      <nav>
+          <ul class="header-links">
+              <li><a href="https://2d15b507-8918-4883-9d3e-70c670a486a3-00-84tsvfr73n3p.riker.replit.dev/#home">Home</a></li>
+              <li><a href="https://2d15b507-8918-4883-9d3e-70c670a486a3-00-84tsvfr73n3p.riker.replit.dev/#products">Pricing</a></li>
+              <li><a href="/Discord" target="_blank">Discord</a></li>
+              <li><a href="/Youtube" target="_blank">Youtube</a></li>
+            <button
+              class="donate-button"
+              id="sellix-buy-button"
+              data-sellix-product="665e401025b0d"
+              type="submit"
+              alt="Buy Now with sellix.io"
+            >
+              Donate
+            </button>
+
+          </ul>
+      </nav>
+  </header>
+<h1>YouTube Videos</h1>
+<div class="video-container" id="video-container">
+    <!-- Videos will be inserted here -->
+</div>
+
+    <footer>
+
+    </footer>
+</body>
+</html>
